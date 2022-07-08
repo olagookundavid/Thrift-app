@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'text_fields_container.dart';
 
 class TextInputField extends StatelessWidget {
@@ -27,7 +28,6 @@ class TextInputField extends StatelessWidget {
           padding: const EdgeInsets.only(left: 10, bottom: 5),
           child: TextFormField(
             controller: controller,
-            // cursorColor: ,
             decoration: InputDecoration(
               hintText: hintText,
               hintStyle: isbold!

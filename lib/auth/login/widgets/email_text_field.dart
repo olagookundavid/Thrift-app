@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'text_fields_container.dart';
+import '../../../widgets/text_fields_container.dart';
 
 class EmailInputField extends StatelessWidget {
   final TextEditingController controller;

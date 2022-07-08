@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:thrift_project/rounded_button.dart';
-import '../text_input_fields.dart';
+import 'package:thrift_project/widgets/rounded_button.dart';
+
+import '../widgets/text_input_fields.dart';
 
 class RegisterCustomerPage extends StatelessWidget {
   RegisterCustomerPage({Key? key}) : super(key: key);

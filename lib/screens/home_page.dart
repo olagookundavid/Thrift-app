@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:thrift_project/action_tiles.dart';
-import 'package:thrift_project/screens/login_page.dart';
+import 'package:thrift_project/widgets/action_tiles.dart';
+import 'package:thrift_project/auth/login/login_page.dart';
 import 'package:thrift_project/screens/transfer_page.dart';
 import 'package:thrift_project/screens/withdrawal_page.dart';
 import 'deposit_screen.dart';

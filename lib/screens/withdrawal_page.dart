@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../rounded_button.dart';
-import '../text_input_fields.dart';
+import '../widgets/rounded_button.dart';
+import '../widgets/text_input_fields.dart';
 
 class WithdrawalPage extends StatelessWidget {
   WithdrawalPage({Key? key}) : super(key: key);

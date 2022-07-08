@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../text_input_fields.dart';
-import '../rounded_button.dart';
+import '../widgets/rounded_button.dart';
+import '../widgets/text_input_fields.dart';
 
 class TransferPage extends StatefulWidget {
   const TransferPage({Key? key}) : super(key: key);

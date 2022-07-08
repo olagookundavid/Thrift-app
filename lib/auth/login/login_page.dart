@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:thrift_project/screens/home_page.dart';
-import '../email_text_field.dart';
-import '../password_text_fields.dart';
-import '../login_buttons.dart';
+import 'widgets/email_text_field.dart';
+import 'widgets/password_text_fields.dart';
+import 'widgets/login_buttons.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);

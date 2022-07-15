@@ -43,7 +43,7 @@ class RegisterCustomerPage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
-            height: MediaQuery.of(context).size.height * .88,
+            height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             decoration: const BoxDecoration(
               image: DecorationImage(

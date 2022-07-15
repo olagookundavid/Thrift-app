@@ -10,6 +10,7 @@ class DepositPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(
@@ -56,7 +57,7 @@ class DepositPage extends StatelessWidget {
                 ),
                 ClickableButton(
                   press: () {},
-                  text: 'Collect',
+                  text: 'Deposit',
                 ),
                 const Spacer(),
                 const Image(image: AssetImage('assets/logo.png')),

@@ -36,6 +36,7 @@ class EmailInputField extends StatelessWidget {
           }
           return null;
         },
+        keyboardType: TextInputType.emailAddress,
         autovalidateMode: AutovalidateMode.onUserInteraction,
       ),
     );

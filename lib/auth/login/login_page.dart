@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:thrift_project/local_storage/shared_preferences.dart';
 import 'package:thrift_project/screens/home_page.dart';
 import 'widgets/email_text_field.dart';
 import 'widgets/password_text_fields.dart';
@@ -19,6 +20,8 @@ class _HomePageState extends State<LoginPage> {
   void initState() {
     _email = TextEditingController();
     _password = TextEditingController();
+    _email.text = LoginSharedPreferences.getUserEmail() ?? '';
+    _password.text = LoginSharedPreferences.getUserPassword() ?? '';
     super.initState();
   }
 
@@ -64,13 +67,15 @@ class _HomePageState extends State<LoginPage> {
                 child: PasswordTextField(controller: _password),
               ),
               const SizedBox(height: 12),
-              LoginButton(press: () {
+              LoginButton(press: () async {
                 if (_formKey.currentState!.validate()) {
                   Navigator.of(context).pushAndRemoveUntil(
                       MaterialPageRoute(
                         builder: (context) => const HomePage(),
                       ),
                       (route) => false);
+                  await LoginSharedPreferences.setUserEmail(_email.text);
+                  await LoginSharedPreferences.setUserPassword(_password.text);
                 }
               }),
               TextButton(

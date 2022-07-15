@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:thrift_project/local_storage/shared_preferences.dart';
 import 'auth/login/login_page.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await LoginSharedPreferences.init();
   runApp(const MyApp());
 }
 

@@ -1,4 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
+import 'package:thrift_project/resources/dialogues.dart';
+import 'package:thrift_project/services/loanservice.dart';
 import '../widgets/rounded_button.dart';
 import '../widgets/text_input_fields.dart';
 
@@ -6,6 +10,8 @@ class LoanCollectionPage extends StatelessWidget {
   LoanCollectionPage({Key? key}) : super(key: key);
   final TextEditingController cardNo = TextEditingController();
   final TextEditingController amountNo = TextEditingController();
+  final TextEditingController accountNo = TextEditingController();
+
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -47,6 +53,14 @@ class LoanCollectionPage extends StatelessWidget {
                 height: 10,
               ),
               TextNumInputField(
+                hintText: 'Account Number  (optional)',
+                controller: accountNo,
+                isbold: false,
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              TextNumInputField(
                 hintText: 'Amount',
                 controller: amountNo,
               ),
@@ -54,7 +68,14 @@ class LoanCollectionPage extends StatelessWidget {
                 height: MediaQuery.of(context).size.height * 0.03,
               ),
               ClickableButton(
-                press: () {},
+                press: () async {
+                  bool isLoaned = await LoanCollectionService()
+                      .collectLoan(cardNo.text, accountNo.text, amountNo.text);
+                  if (isLoaned) {
+                    await successDialog(context, 'Loan Collection successful');
+                  }
+                  await showErrorDialog(context, 'Loan Collection failed');
+                },
                 text: 'Collect',
               ),
               const Spacer(),

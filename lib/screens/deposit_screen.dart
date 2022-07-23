@@ -1,4 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
+import 'package:thrift_project/resources/dialogues.dart';
+import 'package:thrift_project/services/deposit_service.dart';
 import '../widgets/rounded_button.dart';
 import '../widgets/text_input_fields.dart';
 
@@ -6,6 +10,7 @@ class DepositPage extends StatelessWidget {
   DepositPage({Key? key}) : super(key: key);
   final TextEditingController cardNo = TextEditingController();
   final TextEditingController amountNo = TextEditingController();
+  final TextEditingController accountNo = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -49,6 +54,14 @@ class DepositPage extends StatelessWidget {
                   height: 15,
                 ),
                 TextNumInputField(
+                  hintText: 'Account Number  (optional)',
+                  controller: accountNo,
+                  isbold: false,
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                TextNumInputField(
                   hintText: 'Amount',
                   controller: amountNo,
                 ),
@@ -56,7 +69,14 @@ class DepositPage extends StatelessWidget {
                   height: 15,
                 ),
                 ClickableButton(
-                  press: () {},
+                  press: () async {
+                    bool isDeposit = await DepositService()
+                        .deposit(cardNo.text, accountNo.text, amountNo.text);
+                    if (isDeposit) {
+                      await successDialog(context, 'Transfer successful');
+                    }
+                    await showErrorDialog(context, 'Transfer failed');
+                  },
                   text: 'Deposit',
                 ),
                 const Spacer(),

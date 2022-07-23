@@ -52,7 +52,7 @@ class TextInputField extends StatelessWidget {
               }
               return null;
             },
-            autovalidateMode: AutovalidateMode.onUserInteraction,
+            autovalidateMode: AutovalidateMode.disabled,
           ),
         ),
       ),
@@ -80,7 +80,7 @@ class TextNumInputField extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 3),
       child: TextFieldContainer(
         height: height * .055,
-        color: color,
+        color: color ?? Colors.grey[100],
         child: Padding(
           padding: const EdgeInsets.only(left: 10, bottom: 5),
           child: TextFormField(
@@ -110,7 +110,7 @@ class TextNumInputField extends StatelessWidget {
               }
               return null;
             },
-            autovalidateMode: AutovalidateMode.onUserInteraction,
+            autovalidateMode: AutovalidateMode.disabled,
           ),
         ),
       ),
@@ -168,7 +168,7 @@ class TextPhoneNumInputField extends StatelessWidget {
               }
               return null;
             },
-            autovalidateMode: AutovalidateMode.onUserInteraction,
+            autovalidateMode: AutovalidateMode.disabled,
           ),
         ),
       ),
@@ -226,7 +226,65 @@ class TextAddressInputField extends StatelessWidget {
               }
               return null;
             },
-            autovalidateMode: AutovalidateMode.onUserInteraction,
+            autovalidateMode: AutovalidateMode.disabled,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class TextEmailInputField extends StatelessWidget {
+  final TextEditingController controller;
+  final String hintText;
+  final Color? color;
+  final bool? isbold;
+  const TextEmailInputField({
+    Key? key,
+    required this.hintText,
+    required this.controller,
+    this.isbold = false,
+    this.color,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 3),
+      child: TextFieldContainer(
+        height: height * .055,
+        color: color,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 10, bottom: 5),
+          child: TextFormField(
+            keyboardType: TextInputType.emailAddress,
+            controller: controller,
+            decoration: InputDecoration(
+              hintText: hintText,
+              hintStyle: isbold!
+                  ? const TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 15,
+                      color: Colors.black)
+                  : const TextStyle(
+                      fontSize: 15,
+                      color: Colors.grey,
+                      fontWeight: FontWeight.w600,
+                    ),
+              border: InputBorder.none,
+            ),
+            validator: (text) {
+              if (text == null || text.isEmpty) {
+                return 'This field can\'t be empty';
+              }
+              //number regexp matcher
+              if (!RegExp(r'(\d+)').hasMatch(text)) {
+                return 'input not valid';
+              }
+              return null;
+            },
+            autovalidateMode: AutovalidateMode.disabled,
           ),
         ),
       ),
